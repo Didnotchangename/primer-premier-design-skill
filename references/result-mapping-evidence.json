@@ -1,0 +1,110 @@
+{
+  "artifact_sha256": "024eea91d0e65f068784f93760fa27eb7d4ab69f642404c26049ad0d3112e4c8",
+  "evidence_kind": "local objdump static machine-code observation; no runtime state modified",
+  "source": "work/pp5-results-disassembly.txt",
+  "findings": [
+    {
+      "claim": "SearchResults vtable",
+      "value": "0x54a388",
+      "at": "0x4d6898"
+    },
+    {
+      "claim": "PSearchResultGrid constructor and vtable",
+      "constructor": "0x4dc9e0",
+      "vtable": "0x54a5f8",
+      "at": "0x4dca7b"
+    },
+    {
+      "claim": "grid pointer in SearchResults window",
+      "offset": "0x100",
+      "at": "0x4da2de"
+    },
+    {
+      "claim": "grid document pointer populated",
+      "offset": "0xec",
+      "setter": "0x4dcd40",
+      "at": "0x4dcd4e"
+    },
+    {
+      "claim": "grid callbacks",
+      "offset_e8": "create row widgets",
+      "offset_e4": "populate row widgets",
+      "setter": "0x4dcd20",
+      "pair_populate": "0x4db3e0",
+      "single_populate": "0x4dc310"
+    },
+    {
+      "claim": "pair collection read path",
+      "path": "document+0x70 -> collection; collection+0x0c -> DWORD pointer array; array[row] -> pair",
+      "at": "0x4db408..0x4db419"
+    },
+    {
+      "claim": "primer pair members",
+      "forward": "pair+0x04",
+      "reverse": "pair+0x08",
+      "amplicon_length": "R.position-F.position+R.length",
+      "at": "0x4db5e7..0x4db5fb"
+    },
+    {
+      "claim": "primer structure fields read by table callback",
+      "position_offset": "0x08",
+      "sequence_pointer_offset": "0x0c",
+      "length": "DWORD at sequence_pointer-4",
+      "Tm_float_offset": "0x2c",
+      "at": "0x4dc422..0x4dc458; 0x4dc4cb..0x4dc4d5; 0x4dc533; 0x473bb0",
+      "native_single_rating_offset": "0x44",
+      "correction": "getter proves offset; runtime table observation by main agent identifies rating, not ID"
+    },
+    {
+      "claim": "single primer collections",
+      "path": "document+0x74 if global 0x567f3c==1 else document+0x78; collection+0x0c array",
+      "at": "0x4dc31e..0x4dc349"
+    },
+    {
+      "claim": "pair rating integer read into second display column",
+      "offset": "0x10",
+      "at": "0x4db4a1..0x4db4af"
+    },
+    {
+      "claim": "primer additional float display field",
+      "offset": "0x24",
+      "at": "0x4dc5a1",
+      "interpretation": "likely GC%, requires runtime or table-header corroboration"
+    },
+    {
+      "claim": "single-primer displayed position",
+      "formula": "pos+display_offset+(length-1 if word primer+4==0 else 0); if display_offset<0 and result>=0 add 1",
+      "at": "0x4dc422..0x4dc465"
+    },
+    {
+      "claim": "collection field copied as scalar during collection snapshot",
+      "offset": "0x04",
+      "at": "0x432171",
+      "interpretation": "likely item count; requires observed equality to 100 or vtable getter check"
+    },
+    {
+      "claim": "native primer secondary-structure collections, identified by shared report mode",
+      "hairpin_pointer_offset": "0x18",
+      "self_dimer_pointer_offset": "0x1c",
+      "false_priming_pointer_offset": "0x20",
+      "evidence": "0x47469f/0x4746a2/0x4746ac read consecutive pointers into mode array; 0x47472a selects mode; 0x4746e8..0x474746 builds parallel title array Hairpin (0x5666e4), Dimer(0x5666dc), Site(0x5666d4). Report constructor 0x478640 corroborates explicit Hairpin and False Priming titles.",
+      "count_offset": "0x04 per RWOrdered layout; parent runtime should corroborate"
+    },
+    {
+      "claim": "native pair cross-dimer collection",
+      "pointer_offset": "0x14",
+      "count_offset_in_collection": "0x04",
+      "evidence": "Cross Dimer Report at 0x47d120 references title 0x566978 at0x47d19a; at0x47d39f default selects pair+0x14, at0x47d3a2 copies collection+4 count and at0x47d3b2 copies vector starting+8.",
+      "caution": "non-null collection does not mean Found; empty count means no reported structures"
+    }
+  ],
+  "inferences": [
+    "Sequence is probably an RC string with length prefix; ASCII/IUPAC coding requires runtime validation.",
+    "Runtime heap scan for exact known vtables can find PWR objects without decoding XVT userdata. Require uniqueness and document/grid linkage before use."
+  ],
+  "unknowns": [
+    "row count field in collection not statically resolved; likely RWOrdered inherited vtable+0x40 getter",
+    "0-based vs 1-based input coordinates",
+    "Whether reverse sequence is already order-ready 5-to-3 orientation; must compare template and reverse complement"
+  ]
+}
