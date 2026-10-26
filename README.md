@@ -4,7 +4,7 @@
 
 ## 中文
 
-供 Codex 使用的中文技能，围绕真实 Primer Premier 5（PP5）组织 PCR 引物设计、ORF 分析、特异性检查和 Excel 报告交付。
+供 Local Agent 使用的中文技能，围绕真实 Primer Premier 5（PP5）组织 PCR 引物设计、ORF 分析、特异性检查和 Excel 报告交付。
 
 默认使用 cDNA 模板，先完成一条真实序列的样例，确认格式和筛选方式后再批量处理。完整规范见 [SKILL.md](SKILL.md)。
 
@@ -95,7 +95,7 @@ ORFfinder 与 Primer-BLAST 的网页适配可能随 NCBI 网站变化。待返�
 
 ## English
 
-A Chinese-first Codex skill for PCR primer design using the real **Primer Premier 5 (PP5)** application. It connects ORF analysis, native PP5 candidate generation, specificity checks, and Excel delivery requirements. See [SKILL.md](SKILL.md) for the full instructions.
+A local Agent skill for PCR primer design using the real **Primer Premier 5 (PP5)** application. It connects ORF analysis, native PP5 candidate generation, specificity checks, and Excel delivery requirements. See [SKILL.md](SKILL.md) for the full instructions.
 
 The default PCR template is cDNA. Process one real sequence as a sample, confirm the report format and screening approach, then proceed with batch work.
 
