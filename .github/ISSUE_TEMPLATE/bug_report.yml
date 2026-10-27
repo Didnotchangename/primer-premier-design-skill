@@ -1,0 +1,72 @@
+name: 问题反馈 / Bug report
+description: 跑不通、结果不对、跟你的环境对不上
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        先说一句：这个执行器绑定特定 PP5 版本，环境差异导致跑不通是**已知且常见**的。填清楚下面几项能省掉很多来回。
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 发生了什么
+      description: 你期望的结果 vs 实际结果，有报错就把完整堆栈贴上来。
+      placeholder: |
+        期望：输出 result.xlsx
+        实际：pp5_design.py 在启动阶段退出，报 ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: command
+    attributes:
+      label: 你执行的命令
+      description: 请把真实路径打码，保留参数结构。
+      render: shell
+    validations:
+      required: true
+
+  - type: input
+    id: macos
+    attributes:
+      label: macOS 版本与芯片
+      placeholder: macOS 15.3 / Apple Silicon (M3)
+    validations:
+      required: true
+
+  - type: input
+    id: crossover
+    attributes:
+      label: CrossOver 版本
+      placeholder: CrossOver 25.0
+    validations:
+      required: true
+
+  - type: input
+    id: pp5
+    attributes:
+      label: PP5 版本
+      description: 执行器会校验程序 SHA256，哈希不匹配会直接拒绝运行。
+    validations:
+      required: false
+
+  - type: textarea
+    id: progress
+    attributes:
+      label: progress.json / 日志片段
+      description: 有就贴，注意脱敏（去掉真实序列、基因名、样本编号）。
+      render: json
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 自查
+      options:
+        - label: 我已经先跑过单条序列，不是直接上批量
+          required: true
+        - label: 我贴出的内容里没有真实样本序列或未公开数据
+          required: true

@@ -1,0 +1,47 @@
+name: 需求 / Feature request
+description: 想要新的后端、新的筛选规则、新的输出格式
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Roadmap 里已经列了几项（`--backend primer3`、批量并发、Web UI、英文 SKILL.md），如果跟你想的一样，直接去对应的 issue 里 +1 就行。
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你现在的痛点
+      description: 先说清场景，别直接说方案。"我每条序列都要手工改 Tm 下限" 比 "加个 --tm-min 参数" 有用得多。
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 你希望怎么做
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: 涉及部分
+      options:
+        - 设计后端（PP5 / 其他）
+        - ORF 分析
+        - 特异性检查
+        - Excel 输出格式
+        - 批量与续跑
+        - 文档与安装
+        - 其他
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: 确认
+      options:
+        - label: 这个需求不需要放宽现有的 False Priming / 结构安全边界
+          required: false

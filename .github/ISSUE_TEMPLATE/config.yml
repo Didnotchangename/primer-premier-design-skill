@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 用法讨论 / 你的参数怎么设
+    url: https://github.com/Didnotchangename/primer-premier-design-skill/discussions
+    about: 环境配置、参数取舍、结果怎么看 —— 这类问题放 Discussions 比开 issue 更容易被回答。
+  - name: 先读 SKILL.md
+    url: https://github.com/Didnotchangename/primer-premier-design-skill/blob/main/SKILL.md
+    about: 完整规范、筛选边界和交付契约都在这里，很多问题读一遍就有答案。
