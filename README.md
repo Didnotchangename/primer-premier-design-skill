@@ -121,6 +121,7 @@ python3 ~/.codex/skills/primer-premier-design/scripts/pp5_complete.py \
 | [references/local-runtime.md](references/local-runtime.md) | 运行环境与版本约束 |
 | [references/result-mapping-evidence.json](references/result-mapping-evidence.json) | PP5 原生字段映射证据 |
 | [runtime/python-win32/](runtime/python-win32/) | 随附 Windows Python 3.8.10 32 位嵌入式运行时（bottle 内 Win32 控制用，遵循 PSF 许可） |
+| [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) | 第三方组件许可说明（PP5 / CrossOver / PSF Python / NCBI） |
 
 ## 已知边界
 
@@ -144,7 +145,7 @@ python3 ~/.codex/skills/primer-premier-design/scripts/pp5_complete.py \
 
 ## 许可
 
-原创内容采用 **MIT**。第三方组件（随附的 Windows Python 运行时、PP5、CrossOver）遵循各自许可，**PP5 与 CrossOver 不随本仓库分发**。
+原创内容采用 **MIT**。第三方组件（随附的 Windows Python 运行时、PP5、CrossOver、NCBI 服务）遵循各自许可，**PP5 与 CrossOver 不随本仓库分发**。详见 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)。
 
 ## 致谢
 
@@ -183,6 +184,6 @@ cDNA template · amplicon 200–750 bp overlapping the target ORF · primer 18�
 
 ### License
 
-Original content is **MIT**. Bundled third-party components keep their own licenses. PP5 and CrossOver are not distributed here.
+Original content is **MIT**. Bundled third-party components keep their own licenses; see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). PP5 and CrossOver are not distributed here.
 
 > Contribution notes and detailed behavior live in [SKILL.md](SKILL.md). The skill's internal specification is currently written in Chinese.
